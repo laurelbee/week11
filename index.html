@@ -1,0 +1,57 @@
+  <html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart', 'bar']});
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawChart2);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Month', 'Books Read'],
+          ['January',  1],
+          ['February',  2],
+          ['March',  3],
+          ['April',  1]
+        ]);
+
+        var options = {
+          title: 'Number of Books Lauren Read in 2024',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+        
+      }
+      
+      function drawChart2() {
+        var data2 = google.visualization.arrayToDataTable([
+          ['Rating', 'Number of Books'],
+          ['1', 0],
+          ['2', 0],
+          ['3', 3],
+          ['4', 3],
+          ['5',2]
+        ]);
+
+        var options = {
+          chart: {
+            title: '2024 Book Ratings from Lauren',
+            subtitle: 'No Books Have Been Recorded With a Rating of 1 or 2',
+          }
+        };
+
+        var chart2 = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart2.draw(data2, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
+    <div id="columnchart_material" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
